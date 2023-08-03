@@ -14,7 +14,7 @@ set $mod Mod4
 #set $up k
 #set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term foot
 # set $term gnome-terminal 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -72,8 +72,8 @@ input type:pointer {
 #
     # Start a terminal
     # bindsym $mod+Return exec $term
-    bindsym alt+t exec $term
-    bindsym alt+f exec firefox
+    bindsym ctrl+alt+t exec $term
+#    bindsym alt+f exec firefox
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -103,10 +103,13 @@ input type:pointer {
 #    bindsym $mod+$up focus up
 #    bindsym $mod+$right focus right
     # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
+    #bindsym $mod+Left focus left
+    #bindsym $mod+Down focus down
+    #bindsym $mod+Up focus up
+    #bindsym $mod+Right focus right
+
+    bindsym Mod1+tab focus left
+    #bindsym $mod+Down focus down
 
     # Move the focused window with the same, but add Shift
 #    bindsym $mod+Shift+$left move left
@@ -209,6 +212,7 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+
 #
 # Status Bar:
 #
@@ -218,11 +222,15 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%l:%M %p'; do sleep 1; done
+#    status_command while date +'%l:%M %p'; do sleep 1; done
+    status_command while date +' %H:%M %d.%m.%Y %a'; do sleep 1; done
+    font pango:DejaVu Sans Mono 18
 
     colors {
-        statusline #ffffff
+        statusline #009933
         background #000000
+        focused_workspace  #32323200 #32323200 #995c5c
+        #active_workspace #111111 #323232 #5c5c5c
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
@@ -248,17 +256,34 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 default_border none
 
-#bindsym alt+tab workspace next_on_output 
-#bindsym alt+Shift+tab workspace prev_on_output 
+#bindsym mod1+tab workspace next_on_output 
+#bindsym mod1+Shift+tab workspace prev_on_output 
 #    workspace back_and_forth
-#bindsym $mod+tab workspace back_and_forth
+#bindsym $mod+Ctrl+$left workspace prev
+#bindsym $mod+Ctrl+$right workspace next
+bindsym mod1+Ctrl+left workspace prev
+bindsym mod1+Ctrl+right workspace next
 
 #[ "$(swaymsg '[class=\"firefox\"] focus')" = "[{\"success\":true\}]" ] || swaymsg exec firefox`
-#bindsym $mod+t /home/al/.config/sway/sway-run-or-raise.sh
+#bindsym alt+f /home/l351admin/.config/sway/sway-run-or-raise.sh
 
 bindsym $mod+l exec swaylock -c 000000
 
 exec mako
-exec /home/al/.config/sway/test.sh 
+#exec /home/al/.config/sway/test.sh 
+exec /home/l351admin/.config/sway/microbreak.sh 
 
+# Each app has its own dedicated workspace
+#assign [app_id="Firefox"] 9
+#assign [app_id="foot"] 10
+
+# Bind commands to quickly switch to the app
+#bindsym alt+f exec /home/l351admin/run_firefox
+#bindsym alt+t exec /home/l351admin/run_foot
+#bindsym alt+f exec swaymsg "[app_id=firefox] focus" || exec firefox; mode "default"
+#bindsym alt+e exec swaymsg "[instance=emacs] focus" || exec emacsclient -c; mode "default"
+# Exec the app on startup
+#exec firefox 
+#exec foot
 include /etc/sway/config.d/*
+
