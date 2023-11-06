@@ -14,7 +14,7 @@ set $mod Mod4
 #set $up k
 #set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term foot
 # set $term gnome-terminal 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -242,11 +242,17 @@ input * {
     xkb_options grp:caps_toggle
 }
 
+client.focused #000000 #19334d #19334d
+client.unfocused #000000 #13263a #13263a
+
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
-default_border none
+default_border normal 3
+
+bindsym ctrl+alt+right workspace next_on_output
+bindsym ctrl+alt+left workspace prev_on_output
 
 #bindsym alt+tab workspace next_on_output 
 #bindsym alt+Shift+tab workspace prev_on_output 
