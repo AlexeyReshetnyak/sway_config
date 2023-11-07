@@ -283,6 +283,9 @@ exec /home/l351admin/.config/sway/microbreak.sh
 #assign [app_id="Firefox"] 9
 #assign [app_id="foot"] 10
 
+bindsym alt+Shift+Tab focus left                                   
+bindsym alt+Tab focus right
+
 # Bind commands to quickly switch to the app
 #bindsym alt+f exec /home/l351admin/run_firefox
 #bindsym alt+t exec /home/l351admin/run_foot
