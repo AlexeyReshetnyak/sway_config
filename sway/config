@@ -227,11 +227,12 @@ bar {
     font pango:DejaVu Sans Mono 18
 
     colors {
-        statusline #009933
+        statusline #3e5578
         background #000000
-        focused_workspace  #32323200 #32323200 #995c5c
-        #active_workspace #111111 #323232 #5c5c5c
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        focused_workspace  #555566 #333344 #9999bb
+#        active_workspace #111111 #323232 #5c5c5c
+        inactive_workspace #32324300 #32324300 #5c5c6d
+
     }
 }
 
