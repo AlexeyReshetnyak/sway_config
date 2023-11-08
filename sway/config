@@ -286,6 +286,10 @@ exec /home/l351admin/.config/sway/microbreak.sh
 bindsym alt+Shift+Tab focus left                                   
 bindsym alt+Tab focus right
 
+exec_always $term
+exec_always sleep 2s && swaymsg "[app_id=foot]" "splith, layout tabbed"
+exec_always sleep 3s && firefox  
+
 # Bind commands to quickly switch to the app
 #bindsym alt+f exec /home/l351admin/run_firefox
 #bindsym alt+t exec /home/l351admin/run_foot
